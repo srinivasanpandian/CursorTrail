@@ -291,21 +291,23 @@ button {
 }
 
 /* Mobile Navigation */
+/* Mobile Navigation */
 .nav-mobile {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    right: 0; /* Changed from left to right */
+    width: 50%; /* Changed from 100% to 50% */
     height: 100vh;
     background-color: var(--secondary-color);
-    padding: 100px var(--spacing-lg) var(--spacing-lg);
+    padding: 80px var(--spacing-lg) var(--spacing-lg);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
     transform: translateX(100%);
     transition: transform var(--transition-normal);
     z-index: 1;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-mobile.active {
@@ -314,12 +316,14 @@ button {
 
 .nav-mobile a {
     color: var(--white);
-    font-size: 1.25rem;
+    font-size: 1rem; /* Reduced from 1.25rem */
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: var(--spacing-sm) 0;
     transition: color var(--transition-normal);
+    width: 100%;
+    text-align: center;
 }
 
 .nav-mobile a.active {
@@ -331,11 +335,53 @@ button {
 }
 
 .nav-mobile .order-btn.mobile {
-    margin-top: var(--spacing-lg);
-    width: 100%;
-    max-width: 300px;
+    margin-top: var(--spacing-md);
+    width: 90%;
+    max-width: 250px;
+    padding: var(--spacing-sm) var(--spacing-md);
 }
 
+/* Mobile Navigation Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+    z-index: 0;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Update responsive styles */
+@media (max-width: 768px) {
+    .nav-mobile {
+        width: 60%; /* Slightly wider on tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-mobile {
+        width: 75%; /* Wider on mobile phones */
+        padding: 70px var(--spacing-md) var(--spacing-md);
+    }
+
+    .nav-mobile a {
+        font-size: 0.9rem; /* Smaller font on mobile */
+    }
+
+    .nav-mobile .order-btn.mobile {
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: 0.9rem;
+    }
+}
 /* Hero Section */
 .hero {
     position: relative;
